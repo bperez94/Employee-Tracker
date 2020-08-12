@@ -33,6 +33,9 @@ function initAdd() {
         "add department",
         "add position",
         "add employee",
+        "view department",
+        "view position",
+        "view employee",
         "done"
       ]
     })
@@ -40,7 +43,7 @@ function initAdd() {
       switch (answer.add) {
         case "add department":
         addDept();
-        
+        break;
       } 
       switch (answer.add) {
         case "add position":
@@ -52,6 +55,21 @@ function initAdd() {
         addEmp();
         break;
       } 
+      switch (answer.add) {
+        case "view department":
+          viewDep();
+        break;
+      }
+      switch (answer.add) {
+        case "view position":
+          viewPos();
+        break;
+      }
+      switch (answer.add) {
+        case "view employee":
+          viewEmp();
+        break;
+      }
       switch (answer.add) {
         case "done":
         break;
@@ -72,20 +90,17 @@ function addDept() {
     },
     {
       type: "input",
-      name: "name",
-      message: "what is your name?"
+      name: "deptName",
+      message: "what is your department's name?"
     },
   ])
-  .then((answer) => {
-     console.table(answer);
-     //sql query goes here
-  }).catch((err) => {
-    console.log(err.message);
-  });
-
-  
-
+  .then (function(answer) {
+    connection.query("INSERT INTO department (department_Name);"),
+    [answer.name],
+    console.table("added " + addDept.deptName + " department.\n" );
+  })
 }
+
 
 // add position function
 function addPos() {
@@ -154,4 +169,29 @@ function addEmp() {
   });
 }
 
+function viewDep() {
+connection.query("SELECT * FROM department",function (err,res) {
+  if (err) throw err;
+  console.log("department displayed");
+  console.table(res);
+})
+initAdd();
+}
 
+function viewPos() {
+  connection.query("SELECT * FROM position",function (err,res) {
+    if (err) throw err;
+    console.log("position displayed");
+    console.table(res);
+  })
+  initAdd();
+}
+
+function viewEmp() {
+  connection.query("SELECT * FROM employee",function (err,res) {
+    if (err) throw err;
+    console.log("employee displayed");
+    console.table(res);
+  })
+  initAdd();
+}
