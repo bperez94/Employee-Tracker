@@ -13,7 +13,8 @@ var connection = mysql.createConnection({
 
   // Your password
   password: "lowercase",
-  database: "employeeDB"
+  database: "employeeDB",
+
 });
 connection.connect(function (err) {
   if (err) throw err;
@@ -95,10 +96,14 @@ function addDept() {
     },
   ])
   .then (function(answer) {
-    connection.query("INSERT INTO department (department_Name);"),
-    [answer.name],
-    console.table("added " + addDept.deptName + " department.\n" );
+    connection.query('INSERT INTO department (id,department_Name) VALUES (?,?)', [answer.id,answer.deptName], function(err,result) {
+      if (err) throw err;
+      console.table("added " + answer.deptName + " department.\n" );
+      initAdd();
+    });
+   
   })
+ 
 }
 
 
@@ -122,16 +127,17 @@ function addPos() {
     },
     {
       type: "input",
-      name: "dep id",
+      name: "department_id",
       message: "what is your department id?"
     },
   ])
-  .then((answers) => {
-    console.table(answers);
-    //sql query
-  }).catch((err) => {
-    console.log(err.message);
-  });
+  .then (function(answer) {
+    connection.query('INSERT INTO position (id, title, salary, department_id) VALUES (?,?,?,?)',[answer.id,answer.title,answer.salary,answer.department_id,], function(err,result) {
+      if (err) throw err;
+      console.table("added " + answer.title + " department.\n" );
+      initAdd();
+    });
+  })
 }
 
 function addEmp() {
@@ -143,12 +149,12 @@ function addEmp() {
     },
     {
       type: "input",
-      name: "FName",
+      name: "fName",
       message: "whats your first name?"
     },
     {
       type: "input",
-      name: "LName",
+      name: "lName",
       message: "Whats your last name?"
     },
     {
@@ -162,11 +168,15 @@ function addEmp() {
       message: "if manager please ad manager id number?"
     },
   ])
-  .then((answers) => {
-    console.table(answers);
-  }).catch((err) => {
-    console.log(err.message);
-  });
+  .then (function(answer) {
+    connection.query('INSERT INTO employee (id, first_name, last_name, role_id, manager_id) VALUES (?,?,?,?,?)', [answer.id,answer.fName,answer.lName,answer.position,answer.manager], function(err,result) {
+      if (err) throw err;
+      console.table("added " + answer.fName + " as employee.\n" );
+      initAdd;
+    });
+  
+  })
+ 
 }
 
 function viewDep() {
