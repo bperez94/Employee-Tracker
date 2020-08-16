@@ -6,11 +6,8 @@
 # By Brandon Perez
 
 # Screen Shot
-<<<<<<< HEAD
+
  <img src = "Screenshot7.png">
-=======
-https://github.com/bperez94/Employee-Tracker/blob/master/Screenshot7.png>
->>>>>>> 583a02990690a8c4d0aa2ea9d5cc16628ea4ec66
 
 ## Table of Contents
 * [Description](#Description)
