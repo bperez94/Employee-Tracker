@@ -6,10 +6,6 @@
 # By Brandon Perez
 
 # Screen Shot
-<<<<<<< HEAD
-=======
-
->>>>>>> 263d9b9aabd99b68f342cda59340d51c5fc4ae5c
  <img src = "Screenshot7.png">
 
 ## Table of Contents
