@@ -6,7 +6,7 @@
 # By Brandon Perez
 
 # Screen Shot
-<a href= "Screenshot .png" >
+https://github.com/bperez94/Employee-Tracker/blob/master/Screenshot7.png>
 
 ## Table of Contents
 * [Description](#Description)
