@@ -6,7 +6,7 @@
 # By Brandon Perez
 
 # Screen Shot
-<a href= "Screenshot .png" >
+ <img src = "Screenshot7.png">
 
 ## Table of Contents
 * [Description](#Description)
